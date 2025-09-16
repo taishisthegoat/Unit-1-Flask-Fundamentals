@@ -39,8 +39,21 @@ def calculator(num1, operation, num2):
       return f"{num1} {operation} {num2} = {result}"
     else: 
         return f"unknown operation {operation}"
-      
- 
+
+@app.route("/temp/<mes1>/<mes2>/<int:num1>")
+def conversion(mes1, mes2, num1):
+      if mes1 == 'C' and mes2 == 'F':
+        result = (num1*9/5) + 32
+        return f'{num1}°C is equal to {round(result,1)}°F'
+      elif mes1 == 'F' and mes2 == 'C':
+        result = (num1-32)*5/9
+        return f"{num1}°F is equal to {round(result,1)}°C"
+      else:
+        return f"Please enter a valid measurement"
+
+
+         
+    
 if __name__ == '__main__':
  app.run(debug=True)
 
