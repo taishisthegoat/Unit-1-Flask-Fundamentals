@@ -26,8 +26,15 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
+        user_data = {
+           'name': name,
+           'email': email,
+           'message': message
+        }
 
-        return render_template('contact_success.html')
+        return f"Thanks {name}! We'll contact you at {email}"
+
+        # return render_template('contact_success.html', name=name)
 
 if __name__ == '__main__':
  app.run(debug=True)
